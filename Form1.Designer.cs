@@ -30,9 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label2 = new System.Windows.Forms.Label();
+            this.JavaRoute = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.选项 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出 = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,43 +39,48 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialRaisedButton3 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialRaisedButton4 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialRaisedButton5 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DefaultJavaChosed = new MaterialSkin.Controls.MaterialRadioButton();
+            this.UseYourOwnJava = new MaterialSkin.Controls.MaterialRadioButton();
+            this.BypassZZ = new MaterialSkin.Controls.MaterialCheckBox();
+            this.JavaFile = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.choosejava = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.选项.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.MediumAquamarine;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(8, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CrabMCSM 开服器";
             // 
             // toolTip1
             // 
             this.toolTip1.ToolTipTitle = "Java 路径，如不选择则默认使用系统内优先级最高的 Java";
             // 
-            // label2
+            // JavaRoute
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(11, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(221, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "程序不完善，目前不支持选定 Java 版本";
+            this.JavaRoute.Depth = 0;
+            this.JavaRoute.Enabled = false;
+            this.JavaRoute.Hint = "";
+            this.JavaRoute.Location = new System.Drawing.Point(15, 279);
+            this.JavaRoute.MouseState = MaterialSkin.MouseState.HOVER;
+            this.JavaRoute.Name = "JavaRoute";
+            this.JavaRoute.PasswordChar = '\0';
+            this.JavaRoute.SelectedText = "";
+            this.JavaRoute.SelectionLength = 0;
+            this.JavaRoute.SelectionStart = 0;
+            this.JavaRoute.Size = new System.Drawing.Size(631, 23);
+            this.JavaRoute.TabIndex = 29;
+            this.JavaRoute.Text = "你的 Java 路径（请去掉我）";
+            this.toolTip1.SetToolTip(this.JavaRoute, "Java的路径，将会在启动时检验\r\n");
+            this.JavaRoute.UseSystemPasswordChar = false;
             // 
             // notifyIcon1
             // 
@@ -107,6 +111,8 @@
             // numericUpDown1
             // 
             this.numericUpDown1.BackColor = System.Drawing.Color.Black;
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.numericUpDown1.ForeColor = System.Drawing.Color.White;
             this.numericUpDown1.Location = new System.Drawing.Point(86, 528);
             this.numericUpDown1.Maximum = new decimal(new int[] {
@@ -120,7 +126,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(71, 23);
+            this.numericUpDown1.Size = new System.Drawing.Size(145, 17);
             this.numericUpDown1.TabIndex = 3;
             this.numericUpDown1.Value = new decimal(new int[] {
             512,
@@ -131,8 +137,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 530);
+            this.label3.Location = new System.Drawing.Point(12, 529);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 4;
@@ -141,8 +148,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(180, 530);
+            this.label4.Location = new System.Drawing.Point(233, 527);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 17);
             this.label4.TabIndex = 6;
@@ -151,8 +159,10 @@
             // numericUpDown2
             // 
             this.numericUpDown2.BackColor = System.Drawing.Color.Black;
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.numericUpDown2.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown2.Location = new System.Drawing.Point(254, 528);
+            this.numericUpDown2.Location = new System.Drawing.Point(307, 527);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -164,7 +174,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(71, 23);
+            this.numericUpDown2.Size = new System.Drawing.Size(163, 17);
             this.numericUpDown2.TabIndex = 5;
             this.numericUpDown2.Value = new decimal(new int[] {
             2048,
@@ -172,89 +182,231 @@
             0,
             0});
             // 
-            // button1
+            // materialRaisedButton1
             // 
-            this.button1.BackColor = System.Drawing.Color.ForestGreen;
-            this.button1.Location = new System.Drawing.Point(1065, 522);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 32);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "开启服务器";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialRaisedButton1.Location = new System.Drawing.Point(1065, 519);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(110, 37);
+            this.materialRaisedButton1.TabIndex = 19;
+            this.materialRaisedButton1.Text = "启动服务器";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click_1);
             // 
-            // button2
+            // materialRaisedButton2
             // 
-            this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(965, 522);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 32);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "硬关闭服务器";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.materialRaisedButton2.Depth = 0;
+            this.materialRaisedButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialRaisedButton2.Location = new System.Drawing.Point(843, 519);
+            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton2.Name = "materialRaisedButton2";
+            this.materialRaisedButton2.Primary = true;
+            this.materialRaisedButton2.Size = new System.Drawing.Size(110, 37);
+            this.materialRaisedButton2.TabIndex = 20;
+            this.materialRaisedButton2.Text = "重启服务器";
+            this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click_1);
             // 
-            // button3
+            // materialRaisedButton3
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkOrange;
-            this.button3.Location = new System.Drawing.Point(865, 522);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 32);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "重启服务器";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.materialRaisedButton3.Depth = 0;
+            this.materialRaisedButton3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialRaisedButton3.Location = new System.Drawing.Point(954, 519);
+            this.materialRaisedButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton3.Name = "materialRaisedButton3";
+            this.materialRaisedButton3.Primary = true;
+            this.materialRaisedButton3.Size = new System.Drawing.Size(110, 37);
+            this.materialRaisedButton3.TabIndex = 21;
+            this.materialRaisedButton3.Text = "关闭服务器";
+            this.materialRaisedButton3.UseVisualStyleBackColor = true;
+            this.materialRaisedButton3.Click += new System.EventHandler(this.materialRaisedButton3_Click_1);
             // 
-            // label6
+            // materialRaisedButton4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(838, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(312, 27);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "请将服务器核心重命名为 Start.jar";
+            this.materialRaisedButton4.Depth = 0;
+            this.materialRaisedButton4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialRaisedButton4.Location = new System.Drawing.Point(1065, 439);
+            this.materialRaisedButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton4.Name = "materialRaisedButton4";
+            this.materialRaisedButton4.Primary = true;
+            this.materialRaisedButton4.Size = new System.Drawing.Size(110, 37);
+            this.materialRaisedButton4.TabIndex = 22;
+            this.materialRaisedButton4.Text = "插件管理器";
+            this.materialRaisedButton4.UseVisualStyleBackColor = true;
+            this.materialRaisedButton4.Click += new System.EventHandler(this.materialRaisedButton4_Click_1);
             // 
-            // button4
+            // materialRaisedButton5
             // 
-            this.button4.BackColor = System.Drawing.Color.Orange;
-            this.button4.Location = new System.Drawing.Point(765, 522);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 32);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "插件管理器";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.materialRaisedButton5.Depth = 0;
+            this.materialRaisedButton5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialRaisedButton5.Location = new System.Drawing.Point(911, 439);
+            this.materialRaisedButton5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton5.Name = "materialRaisedButton5";
+            this.materialRaisedButton5.Primary = true;
+            this.materialRaisedButton5.Size = new System.Drawing.Size(153, 37);
+            this.materialRaisedButton5.TabIndex = 23;
+            this.materialRaisedButton5.Text = "配置文件编辑器";
+            this.materialRaisedButton5.UseVisualStyleBackColor = true;
+            this.materialRaisedButton5.Click += new System.EventHandler(this.materialRaisedButton5_Click_1);
             // 
-            // button5
+            // materialLabel1
             // 
-            this.button5.BackColor = System.Drawing.Color.SeaGreen;
-            this.button5.Location = new System.Drawing.Point(644, 522);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 32);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "配置文件管理器";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(11, 77);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(936, 18);
+            this.materialLabel1.TabIndex = 24;
+            this.materialLabel1.Text = "为了防止宿主机因分配内存过高崩溃，目前程序识别的最大内存值只有当前可用内存的一半（我也不知道这愚蠢的算法是怎么写的）";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(12, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 17);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "最大可分配的 Ram ：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(10, 146);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 25);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Java 的设置";
+            // 
+            // DefaultJavaChosed
+            // 
+            this.DefaultJavaChosed.AutoSize = true;
+            this.DefaultJavaChosed.Depth = 0;
+            this.DefaultJavaChosed.Font = new System.Drawing.Font("Roboto", 10F);
+            this.DefaultJavaChosed.Location = new System.Drawing.Point(9, 198);
+            this.DefaultJavaChosed.Margin = new System.Windows.Forms.Padding(0);
+            this.DefaultJavaChosed.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.DefaultJavaChosed.MouseState = MaterialSkin.MouseState.HOVER;
+            this.DefaultJavaChosed.Name = "DefaultJavaChosed";
+            this.DefaultJavaChosed.Ripple = true;
+            this.DefaultJavaChosed.Size = new System.Drawing.Size(152, 30);
+            this.DefaultJavaChosed.TabIndex = 27;
+            this.DefaultJavaChosed.TabStop = true;
+            this.DefaultJavaChosed.Text = "使用系统默认 Java";
+            this.DefaultJavaChosed.UseVisualStyleBackColor = true;
+            this.DefaultJavaChosed.CheckedChanged += new System.EventHandler(this.DefaultJavaChosed_CheckedChanged);
+            // 
+            // UseYourOwnJava
+            // 
+            this.UseYourOwnJava.AutoSize = true;
+            this.UseYourOwnJava.Depth = 0;
+            this.UseYourOwnJava.Font = new System.Drawing.Font("Roboto", 10F);
+            this.UseYourOwnJava.Location = new System.Drawing.Point(9, 228);
+            this.UseYourOwnJava.Margin = new System.Windows.Forms.Padding(0);
+            this.UseYourOwnJava.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.UseYourOwnJava.MouseState = MaterialSkin.MouseState.HOVER;
+            this.UseYourOwnJava.Name = "UseYourOwnJava";
+            this.UseYourOwnJava.Ripple = true;
+            this.UseYourOwnJava.Size = new System.Drawing.Size(122, 30);
+            this.UseYourOwnJava.TabIndex = 28;
+            this.UseYourOwnJava.TabStop = true;
+            this.UseYourOwnJava.Text = "另外指定 Java";
+            this.UseYourOwnJava.UseVisualStyleBackColor = true;
+            this.UseYourOwnJava.CheckedChanged += new System.EventHandler(this.UseYourOwnJava_CheckedChanged);
+            // 
+            // BypassZZ
+            // 
+            this.BypassZZ.AutoSize = true;
+            this.BypassZZ.Depth = 0;
+            this.BypassZZ.Font = new System.Drawing.Font("Roboto", 10F);
+            this.BypassZZ.Location = new System.Drawing.Point(9, 328);
+            this.BypassZZ.Margin = new System.Windows.Forms.Padding(0);
+            this.BypassZZ.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.BypassZZ.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BypassZZ.Name = "BypassZZ";
+            this.BypassZZ.Ripple = true;
+            this.BypassZZ.Size = new System.Drawing.Size(408, 30);
+            this.BypassZZ.TabIndex = 30;
+            this.BypassZZ.Text = "绕过智障算法，强制开启超过内存可用数值一半的服务器";
+            this.BypassZZ.UseVisualStyleBackColor = true;
+            this.BypassZZ.CheckedChanged += new System.EventHandler(this.BypassZZ_CheckedChanged);
+            // 
+            // JavaFile
+            // 
+            this.JavaFile.Depth = 0;
+            this.JavaFile.Location = new System.Drawing.Point(652, 275);
+            this.JavaFile.MouseState = MaterialSkin.MouseState.HOVER;
+            this.JavaFile.Name = "JavaFile";
+            this.JavaFile.Primary = true;
+            this.JavaFile.Size = new System.Drawing.Size(80, 31);
+            this.JavaFile.TabIndex = 31;
+            this.JavaFile.Text = "Open...";
+            this.JavaFile.UseVisualStyleBackColor = true;
+            this.JavaFile.Click += new System.EventHandler(this.JavaFile_Click);
+            // 
+            // choosejava
+            // 
+            this.choosejava.DefaultExt = "exe";
+            this.choosejava.Filter = "应用程序|*.exe";
+            this.choosejava.Title = "选择Java环境";
+            this.choosejava.FileOk += new System.ComponentModel.CancelEventHandler(this.choosejava_FileOk);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.ForeColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Location = new System.Drawing.Point(755, 139);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(419, 259);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "版本公告 版本：null";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(8, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "null";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1171, 559);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1187, 598);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.JavaFile);
+            this.Controls.Add(this.BypassZZ);
+            this.Controls.Add(this.JavaRoute);
+            this.Controls.Add(this.UseYourOwnJava);
+            this.Controls.Add(this.DefaultJavaChosed);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.materialRaisedButton5);
+            this.Controls.Add(this.materialRaisedButton4);
+            this.Controls.Add(this.materialRaisedButton3);
+            this.Controls.Add(this.materialRaisedButton2);
+            this.Controls.Add(this.materialRaisedButton1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -263,21 +415,20 @@
             this.MinimumSize = new System.Drawing.Size(1187, 598);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CrabMCSM";
+            this.Text = "CrabSS | Crab MC Server Starter";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.选项.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip 选项;
         private System.Windows.Forms.ToolStripMenuItem 退出;
@@ -285,12 +436,22 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton3;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton4;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private MaterialSkin.Controls.MaterialRadioButton DefaultJavaChosed;
+        private MaterialSkin.Controls.MaterialRadioButton UseYourOwnJava;
+        private MaterialSkin.Controls.MaterialSingleLineTextField JavaRoute;
+        private MaterialSkin.Controls.MaterialCheckBox BypassZZ;
+        private MaterialSkin.Controls.MaterialRaisedButton JavaFile;
+        private System.Windows.Forms.OpenFileDialog choosejava;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
     }
 }
 
