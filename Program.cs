@@ -25,7 +25,8 @@ namespace CrabMCSM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // 114514 114514 114514 114514 114514 114514 114514 114514 114514 114514 114514 114514 114514
             Application.Run(new Form1());
-        }
+        } //人呢... E有没有部分编程MS 雅黑字太粗了 能嵌入Manrope3吗 你去看我改的FORM1
     }
 }

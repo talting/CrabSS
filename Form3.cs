@@ -35,12 +35,18 @@ namespace CrabMCSM
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            try
+            {
                 textBox1.Visible = true;
-            //不是这个文件 是Form2
                 textBox1.Text = string.Empty;
                 StreamReader sr = new StreamReader("server.properties");
                 textBox1.Text = sr.ReadToEnd();
                 sr.Close();
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                MessageBox.Show("未找到配置文件，确认开启过服务器？", "关键错误", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2);
+            }              
         }
 
         private void tabPage1_Click(object sender, EventArgs e)

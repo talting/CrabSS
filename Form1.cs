@@ -15,6 +15,10 @@
 * 编译环境: .NET FrameWork 4.5(Visual Studio 2022)、Windows 11 （10.0.22000.120）
 * 注:禁止商业用途
 */
+// @教育部 😄发起了💧筹
+// Ministry of Human Resources and Social Security of the People's Republic of China think: Programer is a kind of farmer
+// So we are farmers.HI FARMER!
+// lmao LLL
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,10 +59,17 @@ namespace CrabMCSM
             skinManager.AddFormToManage(this);
             skinManager.Theme = MaterialSkinManager.Themes.DARK;
             skinManager.ColorScheme = new ColorScheme(Primary.Indigo400, Primary.BlueGrey900, Primary.BlueGrey500, Accent.Blue400, TextShade.WHITE);
+            skinManager.ROBOTO_MEDIUM_10 = new Font("Microsoft YaHei", 10);
+            skinManager.ROBOTO_MEDIUM_11 = new Font("Microsoft YaHei", 11);
+            skinManager.ROBOTO_MEDIUM_12 = new Font("Microsoft YaHei", 12);
+            skinManager.ROBOTO_REGULAR_11 = new Font("Microsoft YaHei", 11);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)//初始化主页面
-        {
+        { // 现在干啥 看顶头注释
+            label5.Text = httpGet();
+            //然后现在要在关闭窗口的时候保存Json，更改过的数据 我先开一下应用 你现在
             if (!File.Exists("settings.json"))
             {//初始化Json部分
                 try
@@ -81,7 +92,7 @@ namespace CrabMCSM
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    MessageBox.Show("无法生成配置文件\nUnauthorizedAccessException:对路径" + System.Environment.CurrentDirectory + " 的访问被拒绝。\n程序将继续执行，但非常不建议您继续使用，因为无法保存你的更改。", "关键错误", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2);
+                    MessageBox.Show("无法生成配置文件\nUnauthorizedAccessException:对路径" + System.Environment.CurrentDirectory + " 的访问被拒绝。\n程序即将退出。", "关键错误", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2);
                     Application.Exit();
                 }
 
@@ -254,19 +265,18 @@ namespace CrabMCSM
             MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar", "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2); // 重新确认启动参数
             Process ppp = Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar");//启动java
         }
-            
         // 要HTTP请求直接调用此函数 你WEB端写的啥？？？？？你到时候GET又不会运行你的JS 那没事了 我还是直接写静态文件吧
-        static string httpGet(string url) //https://www.crabapi.cn/api/v5/crabss/data/getData
-        {
-            WebRequest request = WebRequest.Create("https://www.crabapi.cn/api/v5/crabss/data/getData");
+        static string httpGet(string url = "https://www.crabapi.cn/api/v5/crabss/data/getData") //https://www.crabapi.cn/api/v5/crabss/data/getData
+        { 
+            WebRequest request = WebRequest.Create(url);
             request.Credentials = CredentialCache.DefaultCredentials;
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse(); 
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
             string responseFromServer = reader.ReadToEnd();
             reader.Close();
             dataStream.Close();
-            response.Close(); // 能读到我里面写的\n吗 这个不一定 你运行到时候看看 公告上的GITHUB地址还没有创建？我重命名仓库呢 好了 他妈的我最近上GitHub都得挂代理 我他妈谢谢GFW
+            response.Close(); 
             return responseFromServer;
         }
 
