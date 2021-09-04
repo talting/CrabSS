@@ -1,2 +1,2 @@
-# CrabMCSM
-CrabMCSM Minecraft Server Launcher , using C# language
+# CrabSS
+A light,fast,green and open-source Minecraft server launcher.
