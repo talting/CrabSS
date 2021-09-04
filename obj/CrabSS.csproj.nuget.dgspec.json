@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\x6010\\source\\repos\\CrabMCSM\\CrabMCSM\\CrabSS.csproj": {}
+    "D:\\新项目文件夹\\CrabMCSM\\CrabMCSM\\CrabSS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\x6010\\source\\repos\\CrabMCSM\\CrabMCSM\\CrabSS.csproj": {
+    "D:\\新项目文件夹\\CrabMCSM\\CrabMCSM\\CrabSS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\x6010\\source\\repos\\CrabMCSM\\CrabMCSM\\CrabSS.csproj",
+        "projectUniqueName": "D:\\新项目文件夹\\CrabMCSM\\CrabMCSM\\CrabSS.csproj",
         "projectName": "CrabSS",
-        "projectPath": "C:\\Users\\x6010\\source\\repos\\CrabMCSM\\CrabMCSM\\CrabSS.csproj",
-        "packagesPath": "C:\\Users\\x6010\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\x6010\\source\\repos\\CrabMCSM\\CrabMCSM\\obj\\",
+        "projectPath": "D:\\新项目文件夹\\CrabMCSM\\CrabMCSM\\CrabSS.csproj",
+        "packagesPath": "C:\\Users\\CrabAdmin\\.nuget\\packages\\",
+        "outputPath": "D:\\新项目文件夹\\CrabMCSM\\CrabMCSM\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\vs2\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\x6010\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\CrabAdmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,6 +47,10 @@
             "MaterialSkin": {
               "target": "Package",
               "version": "[0.2.1, )"
+            },
+            "MetroModernUI": {
+              "target": "Package",
+              "version": "[1.4.0, )"
             },
             "Microsoft.CSharp": {
               "target": "Package",

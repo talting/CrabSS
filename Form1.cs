@@ -11,8 +11,8 @@
 * 文件名称: Form1.cs
 * 创建者: @是螃蟹aaaaa
 * 创建日期: 2021 / 08 /12
-* 最后编辑日期: 2021 / 08 /15
-* 编译环境: .NET FrameWork 4.5(Visual Studio 2022)、Windows 11 （10.0.22000.120）
+* 最后编辑日期: 2021 / 08 / 22
+* 编译环境: .NET 5(Visual Studio 2022)、Windows 11 （10.0.22000.120）
 * 注:禁止商业用途
 */
 // @教育部 😄发起了💧筹
@@ -36,6 +36,7 @@ using LitJson;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Net;
+using System.Management;
 
 namespace CrabMCSM
 {
@@ -65,10 +66,39 @@ namespace CrabMCSM
             skinManager.ROBOTO_REGULAR_11 = new Font("Microsoft YaHei", 11);
 
         }
+        private static string GetPhisicalMemory()
+        {
+            string st = "";
+            ManagementClass mc = new ManagementClass("Win32_ComputerSystem");
+            ManagementObjectCollection moc = mc.GetInstances();
+            foreach (ManagementObject mo in moc)
+            {
+                st = mo["TotalPhysicalMemory"].ToString();
+            }
+            return st;
+        }
 
+        public static long GetAvailablePhysicalMemory()
+        {
+            long capacity = 0;
+            try
+            {
+                foreach (ManagementObject mo1 in new ManagementClass("Win32_PerfFormattedData_PerfOS_Memory").GetInstances())
+                    capacity += long.Parse(mo1.Properties["AvailableBytes"].Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                capacity = -1;
+                Console.WriteLine(ex.Message);
+            }
+            return capacity;
+        }
         private void Form1_Load(object sender, EventArgs e)//初始化主页面
-        { // 现在干啥 看顶头注释
+        {
+            // 现在干啥 看顶头注释
             label5.Text = httpGet();
+            CheckUpdate ifu = new CheckUpdate();
+            ifu.ShowDialog();
             //然后现在要在关闭窗口的时候保存Json，更改过的数据 我先开一下应用 你现在
             if (!File.Exists("settings.json"))
             {//初始化Json部分
@@ -76,7 +106,7 @@ namespace CrabMCSM
                 {
                     settinginfo settings = new settinginfo();
                     string json = JsonMapper.ToJson(settings); //using LitJson
-                    StreamWriter sw = new StreamWriter(System.Environment.CurrentDirectory);
+                    StreamWriter sw = new StreamWriter(System.Environment.CurrentDirectory + "\\settings.json");
                     sw.Write(json);
                     sw.Close();
                     string strJson = File.ReadAllText("settings.json", Encoding.UTF8);
@@ -89,13 +119,13 @@ namespace CrabMCSM
                     oJson["CustomJavaPath"] = "";
                     string strConvert = Convert.ToString(oJson); //将json装换为string
                     File.WriteAllText("settings.json", strConvert); //将内容写进json文件中
+                    sw.Dispose();
                 }
                 catch (UnauthorizedAccessException)
                 {
                     MessageBox.Show("无法生成配置文件\nUnauthorizedAccessException:对路径" + System.Environment.CurrentDirectory + " 的访问被拒绝。\n程序即将退出。", "关键错误", MessageBoxButtons.OK, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button2);
                     Application.Exit();
                 }
-
             }
             else
             {
@@ -111,6 +141,7 @@ namespace CrabMCSM
                         string maxRamSize = readed.maxRamSize = oJson["maxRamSize"].ToString();
                         string IsCustomJavaSeted = readed.IsCustomJavaSeted = oJson["IsCustomJavaSeted"].ToString();
                         string CustomJavaPath = readed.CustomJavaPath = oJson["CustomJavaPath"].ToString();
+                        reader.Close();
                         groupBox1.Text = "版本公告 版本：" + version;
                         Form1 f = new Form1();
                         f.Text = title;
@@ -133,10 +164,10 @@ namespace CrabMCSM
                     }
                 }
             }
-            PerformanceCounter ramCounter = new PerformanceCounter("Memory", "Committed Bytes");
-            float ram = ramCounter.NextValue();
-            numericUpDown2.Maximum = (decimal)(ram / 2);
-            label1.Text = "最大可分配的 Ram ：" + ram / 1048576 + "MB";
+            float newRam = GetAvailablePhysicalMemory();
+            numericUpDown2.Maximum = (decimal)(newRam / 2);
+            label1.Text = "最大可分配的 Ram ：" +(newRam / 1048576/2) + "MB";
+            label6.Text = hikotoko();   
             if (UseYourOwnJava.Checked == true)
             {
                 JavaRoute.Enabled = true;
@@ -196,38 +227,22 @@ namespace CrabMCSM
                             }
                             else
                             {
-                                MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar", "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                                Process p = Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar");//启动java
-                                p.StartInfo.UseShellExecute = false;
-                                p.StartInfo.CreateNoWindow = true;
-                                p.StartInfo.RedirectStandardOutput = true;
-                                p.StartInfo.RedirectStandardError = true;
-
-
-                               //启动进程
-                                p.Start();
-
-                                //准备读出输出流和错误流
-                                string outputData = string.Empty;
-                                string errorData = string.Empty;
-                                p.BeginOutputReadLine();
-                                p.BeginErrorReadLine();
-
-                                p.OutputDataReceived += (s, b) =>
+                                if (materialSingleLineTextField1.Text != "")
                                 {
-                                    outputData += (b.Data + "\n");
-                                };
-
-                                p.ErrorDataReceived += (fuck, e) =>
+                                    MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar "+materialSingleLineTextField1.Text, "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                                    Process p = Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar " + materialSingleLineTextField1.Text);//启动java
+                                    p.BeginOutputReadLine();
+                                    p.StartInfo.RedirectStandardOutput = true;
+                                    p.StartInfo.RedirectStandardInput = true;
+                                    p.StartInfo.UseShellExecute = false;
+                                    p.StartInfo.CreateNoWindow = true;
+                                    //p.OutputDataReceived += new DataReceivedEventHandler(ProcessOutputHandler);
+                                }
+                                else
                                 {
-                                    errorData += (e.Data + "\n");
-                                };
-
-                                //等待退出
-                                p.WaitForExit();
-
-                                //关闭进程
-                                p.Close();
+                                    MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar", "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                                    _ = Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar");//启动java
+                                }                 
                             }
                         }
                     }
@@ -262,8 +277,16 @@ namespace CrabMCSM
             Process p = Process.Start(@"taskkill", "-f -im javaw.exe");// 炸掉Javaw
             Process pp = Process.Start(@"taskkill", "-f -im java.exe");// 炸掉Java
             MessageBox.Show("冷关闭成功。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
-            MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar", "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2); // 重新确认启动参数
-            Process ppp = Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar");//启动java
+            if (materialSingleLineTextField1.Text != "")
+            {
+                MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar " + materialSingleLineTextField1.Text, "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar " + materialSingleLineTextField1.Text);//启动java
+            }
+            else
+            {
+                MessageBox.Show("已准备好开启服务器\n最小内存值：" + numericUpDown1.Value + "mb\n最大内存值：" + numericUpDown2.Value + "mb\n启动参数：" + "java -Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar", "擦腚 开稽？", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                Process.Start(@"java", "-Xms" + numericUpDown1.Value + "m -Xmx" + numericUpDown2.Value + "m -jar Start.jar");//启动java
+            }
         }
         // 要HTTP请求直接调用此函数 你WEB端写的啥？？？？？你到时候GET又不会运行你的JS 那没事了 我还是直接写静态文件吧
         static string httpGet(string url = "https://www.crabapi.cn/api/v5/crabss/data/getData") //https://www.crabapi.cn/api/v5/crabss/data/getData
@@ -277,6 +300,19 @@ namespace CrabMCSM
             reader.Close();
             dataStream.Close();
             response.Close(); 
+            return responseFromServer;
+        }
+        static string hikotoko(string url = "https://v1.hitokoto.cn/?c=f&encode=text")
+        {
+            WebRequest request = WebRequest.Create(url);
+            request.Credentials = CredentialCache.DefaultCredentials;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            string responseFromServer = reader.ReadToEnd();
+            reader.Close();
+            dataStream.Close();
+            response.Close();
             return responseFromServer;
         }
 
@@ -370,6 +406,12 @@ namespace CrabMCSM
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void materialRaisedButton6_Click(object sender, EventArgs e)
+        {
+            Form4 f = new Form4();
+            f.ShowDialog();
         }
     }
 }
