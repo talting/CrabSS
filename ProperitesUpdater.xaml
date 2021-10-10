@@ -1,0 +1,22 @@
+﻿<Window x:Class="CrabSSWPFTest.ProperitesUpdater"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns:local="clr-namespace:CrabSSWPFTest"
+        mc:Ignorable="d"
+        Title="配置文件编辑器" Height="450" Width="800">
+    <Grid Background="{DynamicResource MaterialDesignBackground}">
+        <Button x:Name="save" Content="保存" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="79" Background="#FF26A600" BorderBrush="#FF3AB751" Click="save_Click"/>
+        <Button x:Name="reload" Content="重载" HorizontalAlignment="Left" Height="31" Margin="112,10,0,0" VerticalAlignment="Top" Width="79" Background="#FF006AA6" BorderBrush="#FF3A9BB7" Click="reload_Click"/>
+        <TextBox x:Name="pro" HorizontalAlignment="Center" Height="365" Margin="0,60,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="780" Cursor="IBeam"/>
+    </Grid>
+</Window>

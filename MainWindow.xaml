@@ -1,0 +1,59 @@
+﻿<Window x:Class="CrabSSWPFTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns:local="clr-namespace:CrabSSWPFTest"
+        mc:Ignorable="d"
+        Title="CrabSS" Height="600" Width="1200">
+    <Grid RenderTransformOrigin="0.5,0.5" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.326"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Label Content="内存分配设置" HorizontalAlignment="Left" Height="34" Margin="18,83,0,0" VerticalAlignment="Top" Width="142" FontSize="20"/>
+        <RadioButton x:Name="SmartAllot" Content="使用 CrabSS 智能分配方法" HorizontalAlignment="Left" Margin="21,122,0,0" VerticalAlignment="Top" Checked="SmartAllot_Checked"/>
+        <RadioButton x:Name="Customize" Content="自定义" HorizontalAlignment="Left" Margin="21,151,0,0" VerticalAlignment="Top" Checked="Customize_Checked"/>
+        <TextBox x:Name="minram" HorizontalAlignment="Left" Height="22" Margin="83,149,0,0" Text="最小内存" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" IsEnabled="False" TextChanged="minram_TextChanged"/>
+        <TextBox x:Name="maxram" HorizontalAlignment="Center" Height="22" Margin="0,149,0,0" Text="最大内存" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" IsEnabled="False" TextChanged="maxram_TextChanged" Cursor="IBeam"/>
+        <Label Content="Java 设定" HorizontalAlignment="Left" Height="34" Margin="18,172,0,0" VerticalAlignment="Top" Width="142" FontSize="20"/>
+        <Image HorizontalAlignment="Left" Height="60" Margin="23,14,0,0" VerticalAlignment="Top" Width="60" Source="/CrabSS.png"/>
+        <Label Content="CrabSS" HorizontalAlignment="Left" Height="35" Margin="98,25,0,0" VerticalAlignment="Top" Width="99" FontSize="24"/>
+        <Label Content="杂项" HorizontalAlignment="Left" Height="34" Margin="14,306,0,0" VerticalAlignment="Top" Width="142" FontSize="20"/>
+        <CheckBox x:Name="enabled_custom_start_code" Content="自定义启动参数" HorizontalAlignment="Left" Height="21" Margin="18,339,0,0" VerticalAlignment="Top" Width="201" Checked="enabled_custom_start_code_Checked"/>
+        <CheckBox x:Name="enabled_start_jar_name" Content="自定义启动文件名" HorizontalAlignment="Left" Height="21" Margin="18,368,0,0" VerticalAlignment="Top" Width="201" Checked="enabled_start_jar_name_Checked"/>
+        <TextBox x:Name="csc" HorizontalAlignment="Left" Height="24" Margin="138,338,0,0" Text="自定义参数" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" IsEnabled="False" Cursor="IBeam"/>
+        <TextBox x:Name="csn" HorizontalAlignment="Left" Height="24" Margin="145,367,0,0" Text="启动文件名" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" IsEnabled="False" Cursor="IBeam"/>
+        <materialDesign:Snackbar IsActive="{Binding IsActive}" Grid.Column="1" HorizontalAlignment="Left" Margin="36,0,0,0">
+            <materialDesign:SnackbarMessage Content="Deleted Item" ActionContent="UNDO" ActionCommand="{Binding UndoCommand}" />
+        </materialDesign:Snackbar>
+        <Label x:Name="info_1" Content="正在下载统一通行证模块" HorizontalAlignment="Left" Height="25" Margin="363,318,0,0" VerticalAlignment="Top" Width="153" Visibility="Hidden" Grid.ColumnSpan="2"/>
+        <GroupBox x:Name="broadcast" Grid.Column="1" Header="版本公告 版本：0.14" HorizontalAlignment="Left" Height="223" Margin="176,27,0,0" VerticalAlignment="Top" Width="559" Content="[FAILURE]"/>
+        <Button x:Name="start" Content="Start!" HorizontalAlignment="Left" Height="33" Margin="19,470,0,0" VerticalAlignment="Top" Width="90" Background="#FF26D13D" BorderBrush="#FF26D13D" Cursor="Hand" Click="start_Click"/>
+        <StackPanel HorizontalAlignment="Left" Height="123" Margin="21,200,0,0" VerticalAlignment="Top" Width="455" Grid.ColumnSpan="2">
+            <RadioButton x:Name="DJava" Content="使用环境变量中设定的Java版本（在1.17及以上版本中可能不兼容服务端）" Height="27" Width="459" Checked="DJava_Checked"/>
+            <RadioButton x:Name="CJava" Content="自行指定 Java 版本" Height="26" Width="459" Checked="CJava_Checked"/>
+            <TextBox x:Name="JRoute" Text="Java 路径" TextWrapping="Wrap" IsEnabled="False" TextChanged="JRoute_TextChanged" Height="27" Width="452"/>
+            <Button x:Name="ChooseJava" Content="选择..." Background="#FF008BFF" BorderBrush="#FF008BFF" FontWeight="Regular" FontSize="10" Click="ChooseJava_Click" IsEnabled="False" Cursor="Hand" Height="21" Width="419" Margin="0,5,0,0"/>
+        </StackPanel>
+        <Viewbox HorizontalAlignment="Left" Height="102" Margin="54,213,0,0" VerticalAlignment="Top" Width="213" Grid.Column="1"/>
+        <Button x:Name="pro" Content="配置文件管理器" HorizontalAlignment="Left" Height="33" Margin="131,470,0,0" VerticalAlignment="Top" Width="132" Background="Transparent" BorderBrush="#FF0498FF" Foreground="#FF0498FF" Click="pro_Click" Cursor="Hand"/>
+        <Button x:Name="plugin" Content="插件管理器" HorizontalAlignment="Left" Height="33" Margin="279,470,0,0" VerticalAlignment="Top" Width="132" Background="Transparent" BorderBrush="#FF0498FF" Foreground="#FF0498FF" Click="plugin_Click"/>
+    </Grid>
+</Window>
