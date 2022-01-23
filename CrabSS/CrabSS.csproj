@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>073011274867_0cd845db020377eb7d3398631a1707dc6b21b7dce.ico</ApplicationIcon>
+    <Win32Resource />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EmbConsole.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="00.jpg" />
+    <None Remove="QQ图片20210515155101.jpg" />
+    <None Remove="QQ图片20210721191245.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="EmbConsole.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.7.3.33" />
+    <PackageReference Include="LitJson" Version="0.17.0" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.MaterialDesign" Version="4.11.0" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1020.30" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="00.jpg" />
+    <Resource Include="QQ图片20210515155101.jpg" />
+    <Resource Include="QQ图片20210721191245.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿<mah:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrabSS"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CrabSS.peanutio"
+        mc:Ignorable="d"
+        Title="应用商店" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="应用商店" HorizontalAlignment="Left" Height="38" Margin="10,7,0,0" VerticalAlignment="Top" Width="127" FontSize="18" Foreground="#FFD75900" FontFamily="Microsoft YaHei UI Light"/>
+        <Grid x:Name="loading" HorizontalAlignment="Left" Height="38" Margin="9,49,0,0" VerticalAlignment="Top" Width="124">
+
+            <mah:ProgressRing HorizontalAlignment="Left" Height="25" Margin="6,5,0,0" VerticalAlignment="Top" Width="25" Foreground="#CCB7B7B7"/>
+            <Label Content="正在加载" HorizontalAlignment="Left" Height="27" Margin="43,0,0,0" VerticalAlignment="Center" Width="65" Foreground="#CCB7B7B7"/>
+
+        </Grid>
+        <ListBox x:Name="list" Visibility="Hidden" HorizontalAlignment="Left" Height="326" Margin="15,97,0,0" VerticalAlignment="Top" Width="773" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Button Content="打开 Peanut.IO" HorizontalAlignment="Left" Height="27" Margin="696,12,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click"/>
+
+    </Grid>
+</mah:MetroWindow>

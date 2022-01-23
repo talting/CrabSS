@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AddCore.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="console.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="kaifu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Main.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="peanutio.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="plugins.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="你被骗了.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AddCore.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="console.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="kaifu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Main.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="peanutio.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="plugins.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="你被骗了.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
