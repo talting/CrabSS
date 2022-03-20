@@ -70,14 +70,14 @@ namespace CrabSS
             request.UserAgent = null;
             request.Timeout = Timeout;
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream myResponseStream = response.GetResponseStream();
-            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
-            string retString = myStreamReader.ReadToEnd();
-            myStreamReader.Close();
-            myResponseStream.Close();
+            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            //Stream myResponseStream = response.GetResponseStream();
+            //StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+            //string retString = myStreamReader.ReadToEnd();
+            //myStreamReader.Close();
+            //myResponseStream.Close();
 
-            return retString;
+            return "屑螃蟹，代码，屎山（）";
         }
         //新服务器创建模块
         /**public void createnewserver(string path)

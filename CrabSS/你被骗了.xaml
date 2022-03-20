@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="你被骗了" Height="450" Width="800">
     <Grid>
-        <Wpf:WebView2 Width="800" Margin="3,0,-3,-1" Source="https://heycrab.xyz/pian.mp4"/>
+        <Wpf:WebView2 Width="800" Margin="3,0,-3,-1" Source="https://nevergonnagiveyouup.club"/>
     </Grid>
 </mah:MetroWindow>

@@ -15,12 +15,17 @@
         <ImageBrush ImageSource="/00.jpg"/>
     </mah:MetroWindow.Background>
     <Grid>
-        <Label Content="测试版程序，可能有很多不确定的错误，请积极反馈" HorizontalAlignment="Left" Height="44" Margin="18,21,0,0" VerticalAlignment="Top" Width="744" Foreground="White"/>
-        <Label Content="我们的GitHub地址是：https://github.com/CrabTechs/CrabSS" HorizontalAlignment="Left" Height="44" Margin="18,42,0,0" VerticalAlignment="Top" Width="744" Foreground="White"/>
-        <Label x:Name="hitokoto" Content="一言...？" HorizontalAlignment="Left" Height="29" Margin="10,840,0,0" VerticalAlignment="Top" Width="911" Foreground="White"/>
-        <Label x:Name="version" Content="当前版本号[0.15r2]" HorizontalAlignment="Right" Height="29" Margin="0,0,-25,0" VerticalAlignment="Bottom" Width="259" Foreground="White" SnapsToDevicePixels="True" Opacity="0.7"/>
-        <Label x:Name="version_online" Content="联网版本号[未知]" HorizontalAlignment="Right" Height="29" Margin="0,0,-135,0" VerticalAlignment="Bottom" Width="259" Foreground="White" SnapsToDevicePixels="True" Opacity="0.7"/>
-        <Controls:MetroAnimatedSingleRowTabControl HorizontalAlignment="Left" Height="749" Margin="22,86,0,0" VerticalAlignment="Top" Width="1550">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="141*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="1426*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="测试版程序，可能有很多不确定的错误，请积极反馈" HorizontalAlignment="Left" Height="44" Margin="18,21,0,0" VerticalAlignment="Top" Width="744" Foreground="White" Grid.ColumnSpan="3"/>
+        <Label Content="我们的GitHub地址是：https://github.com/CrabTechs/CrabSS" HorizontalAlignment="Left" Height="44" Margin="18,42,0,0" VerticalAlignment="Top" Width="744" Foreground="White" Grid.ColumnSpan="3"/>
+        <Label x:Name="hitokoto" Content="一言...？" HorizontalAlignment="Left" Height="29" Margin="10,840,0,0" VerticalAlignment="Top" Width="911" Foreground="White" Grid.ColumnSpan="3"/>
+        <Label x:Name="version" Content="当前版本号[0.15r2]" HorizontalAlignment="Right" Height="29" Margin="0,0,-25,0" VerticalAlignment="Bottom" Width="259" Foreground="White" SnapsToDevicePixels="True" Opacity="0.7" Grid.Column="2"/>
+        <Label x:Name="version_online" Content="联网版本号[未知]" HorizontalAlignment="Right" Height="29" Margin="0,0,-135,0" VerticalAlignment="Bottom" Width="259" Foreground="White" SnapsToDevicePixels="True" Opacity="0.7" Grid.Column="2"/>
+        <Controls:MetroAnimatedSingleRowTabControl HorizontalAlignment="Left" Height="749" Margin="22,86,0,0" VerticalAlignment="Top" Width="1550" Grid.ColumnSpan="3">
             <TabItem Header="主页" Background="{x:Null}" Foreground="White">
                 <Grid Background="#66FFFFFF" Margin="-2,0,2,0">
                     <Label Content="宁好" HorizontalAlignment="Left" Height="45" Margin="14,13,0,0" VerticalAlignment="Top" Width="435" Foreground="White" FontSize="24" FontFamily="Microsoft YaHei UI Light"/>

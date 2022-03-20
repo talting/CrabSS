@@ -7,53 +7,57 @@
         xmlns:local="clr-namespace:CrabSS" xmlns:iconPacks="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Modern"
                   mc:Ignorable="d"
                   WindowStartupLocation="CenterScreen"
-        Title="CrabSS 总控主页" Height="800" Width="1200">
+        Title="CrabSS 总控主页 派蒙修复版" Height="800" Width="1200">
     <Grid Height="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="1139*"/>
+        </Grid.ColumnDefinitions>
         <mah:Tile Title="开服"
                   x:Name="server"
-               Margin="26,106,1034,539"
+               Margin="26,114,1034,546"
                mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
                Background="LimeGreen"
-               HorizontalTitleAlignment="Right" Click="server_Click">
+               HorizontalTitleAlignment="Right" Click="server_Click" Grid.ColumnSpan="2">
             <iconPacks:PackIconModern Width="40"
                               Height="40"
                               Kind="Server" />
         </mah:Tile>
-        <Label Content="总控主页" HorizontalAlignment="Left" Height="60" Margin="15,25,0,0" VerticalAlignment="Top" Width="202" FontSize="22" Foreground="#FF0078D7" FontFamily="Microsoft YaHei Light"/>
+        <Label Content="总控主页" HorizontalAlignment="Left" Height="60" Margin="15,25,0,0" VerticalAlignment="Top" Width="202" FontSize="22" Foreground="#FF0078D7" FontFamily="Microsoft YaHei Light" Grid.ColumnSpan="2"/>
         <mah:Tile Title="公告"
                   x:Name="broadcast"
-            Margin="180,106,620,539"
+            Margin="119,114,620,546"
             mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
             Background="Teal"
             Content="none"
-            HorizontalTitleAlignment="Right" Width="400"/>
+            HorizontalTitleAlignment="Right" Width="400" Grid.Column="1"/>
         <mah:Tile Title="插件管理 | 总数0"
             x:Name="plugins"
-            Margin="590,106,373,539"
+            Margin="529,114,373,546"
             mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
-            HorizontalTitleAlignment="Right" Background="{DynamicResource MahApps.Brushes.AccentBase}" Width="237" Click="plugins_Click">
+            HorizontalTitleAlignment="Right" Background="{DynamicResource MahApps.Brushes.AccentBase}" Width="237" Click="plugins_Click" Grid.Column="1">
             <iconPacks:PackIconModern Width="40"
                 Height="40"
                 Kind="AppPlus" />
         </mah:Tile>
-        <Label x:Name="version" Content="当前版本号[0.15]" HorizontalAlignment="Right" Height="29" Margin="0,0,24,50" VerticalAlignment="Bottom" Width="259" Foreground="#FF8E8D8D" SnapsToDevicePixels="True" Opacity="0.7"/>
-        <Label x:Name="version_online" Content="联网版本号[未知]" HorizontalAlignment="Right" Height="29" Margin="0,0,-86,50" VerticalAlignment="Bottom" Width="259" Foreground="#FF8E8D8D" SnapsToDevicePixels="True" Opacity="0.7"/>
-        <Image HorizontalAlignment="Left" Height="145" Margin="20,621,0,0" VerticalAlignment="Top" Width="145" Source="/QQ图片20210515155101.jpg" Stretch="Fill" MouseDown="Image_MouseDown"/>
-        <Label Content="一张神奇的图片  火速双击" HorizontalAlignment="Left" Height="89" Margin="199,680,0,0" VerticalAlignment="Top" Width="590" Foreground="{DynamicResource MahApps.Brushes.Badged.Background}" FontSize="22"/>
+        <Label x:Name="version" Content="当前版本号[0.15]" HorizontalAlignment="Right" Height="29" Margin="0,0,24,50" VerticalAlignment="Bottom" Width="259" Foreground="#FF8E8D8D" SnapsToDevicePixels="True" Opacity="0.7" Grid.Column="1"/>
+        <Label x:Name="version_online" Content="联网版本号[未知]" HorizontalAlignment="Right" Height="29" Margin="0,0,-86,50" VerticalAlignment="Bottom" Width="259" Foreground="#FF8E8D8D" SnapsToDevicePixels="True" Opacity="0.7" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Height="145" Margin="20,621,0,0" VerticalAlignment="Top" Width="145" Source="/QQ图片20210515155101.jpg" Stretch="Fill" MouseDown="Image_MouseDown" Grid.ColumnSpan="2"/>
+        <Label Content="一张神奇的图片  火速双击" HorizontalAlignment="Left" Height="89" Margin="138,680,0,0" VerticalAlignment="Top" Width="590" Foreground="{DynamicResource MahApps.Brushes.Badged.Background}" FontSize="22" Grid.Column="1"/>
         <mah:Tile Title="Peanut.IO 应用商店"
             x:Name="peanutio"
             Margin="25,286,938,374"
             mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
-            HorizontalTitleAlignment="Right" Background="#FFD75900" Width="237" Click="peanutio_Click">
+            HorizontalTitleAlignment="Right" Background="#FFD75900" Width="237" Click="peanutio_Click" Grid.ColumnSpan="2">
             <iconPacks:PackIconModern Width="40"
                 Height="40"
                 Kind="Store" />
         </mah:Tile>
         <mah:Tile Title="更多功能，进入旧版主页"
             x:Name="old"
-            Margin="287,285,676,375"
+            Margin="226,285,676,375"
             mah:ControlsHelper.MouseOverBorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}"
-            HorizontalTitleAlignment="Right" Background="#FF535333" Width="237" Click="old_Click">
+            HorizontalTitleAlignment="Right" Background="#FF535333" Width="237" Click="old_Click" Grid.Column="1">
             <iconPacks:PackIconModern Width="40"
                 Height="40"
                 Kind="KeyOld" />

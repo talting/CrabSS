@@ -44,7 +44,7 @@ namespace CrabSS
         private const string V = "";
         private bool isFrpOn;
 
-        public static string GetHttpResponse(string url, int Timeout)
+        /*public static string GetHttpResponse(string url, int Timeout)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
@@ -60,7 +60,7 @@ namespace CrabSS
             myResponseStream.Close();
 
             return retString;
-        }
+        }*/
         public MainWindow()
         {
             InitializeComponent();
@@ -159,14 +159,14 @@ namespace CrabSS
                     string F = V;
                 }
             }
-            string version = GetHttpResponse("https://v6.crabapi.cn/api/crabss/version?channel=beta",3200);
+            /*string version = GetHttpResponse("https://v6.crabapi.cn/api/crabss/version?channel=beta",3200);
             string hikotoko = GetHttpResponse("https://v1.hitokoto.cn/?encode=text",1600);
             hitokoto.Content = hikotoko;
             version_online.Content = "联网版本号["+version+"]";
             content.Content = GetHttpResponse("https://v6.crabapi.cn/api/crabss/broadcast?channel=beta&encode=text",1600);
             min.Value = 128;
             max.Minimum = (double)min.Value;
-            loading.Visibility = Visibility.Hidden;
+            loading.Visibility = Visibility.Hidden;*/
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
